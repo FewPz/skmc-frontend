@@ -1,0 +1,29 @@
+# Node.js
+node_modules/
+*.log
+pnpm-lock.yaml
+
+# TypeScript
+*.tsbuildinfo
+dist/
+build/
+
+# Logs
+npm-debug.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Vscode or IDE files
+.vscode/
+.idea/
+*.swp
+
+# MacOS
+.DS_Store
+
+# Operating system files
+Thumbs.db
