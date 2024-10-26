@@ -17,6 +17,8 @@ pnpm-debug.log*
 .env.local
 .env.*.local
 
+drizzle/
+
 # Vscode or IDE files
 .vscode/
 .idea/
