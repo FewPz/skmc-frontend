@@ -1,13 +1,11 @@
-import { minecraftTen } from "./fonts";
-
 export default function Page() {
   return (
     <div>
-      <div style={{ ...minecraftTen }} className="text-4xl font-medium">
-        Test Minecraft Ten Font
+      <div className="font-minecraft text-4xl font-medium">
+        Test Minecraft Ten Font (Smilekrub Server)
       </div>
-      <div>
-        เทสฟอนต์ Test Test TEst
+      <div className="text-3xl">
+        สมายครับเซิร์ฟเวอร์ (Smilekrub Server)
       </div>
     </div>
   );

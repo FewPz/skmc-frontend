@@ -2,8 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "MiSans Thai";
+  src: url("fonts/misan-th-vf.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MiSans Latin";
+  src: url("fonts/misan-latin-vf.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-  font-family: "MiSans Thai", "MiSans Latin", sans-serif;
+  font-family: "MiSans Thai", "MiSans Latin";
+}
+
+.font-minecraft {
+  font-family: 'Minecraft Ten', sans-serif;
 }
 
 @layer base {
@@ -61,6 +79,7 @@ body {
     --chart-5: 340 75% 55%;
   }
 }
+
 
 @layer base {
   * {

@@ -1,6 +1,13 @@
-export const minecraftTen = {
-  fontFamily: "Minecraft Ten",
-  src: `url('/fonts/Minecraft/MinecraftTen-VGORe.ttf') format('truetype')`,
-  fontWeight: "normal",
-  fontStyle: "normal",
-};
+import localFont from 'next/font/local';
+
+export const misanTHVF = localFont({
+  src: '/fonts/misan-th-vf.ttf'
+});
+
+export const misanLatinVF = localFont({
+  src: '/fonts/misan-latin-vf.ttf'
+});
+
+export const minecraftTen = localFont({
+  src: '/fonts/minecraft-ten.ttf'
+});
