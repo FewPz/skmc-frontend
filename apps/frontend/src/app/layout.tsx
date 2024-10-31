@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import "./globals.css";
+import { Footer } from "@/components/ui/Footer";
 
 export const metadata: Metadata = {
   title: "Sk - MC",
@@ -14,8 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="th">
-      <body className="text-customWhite">
+      <body className="min-h-screen overflow-x-hidden text-customWhite">
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
