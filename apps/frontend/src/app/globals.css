@@ -4,14 +4,14 @@
 
 @font-face {
   font-family: "MiSans Thai";
-  src: url("fonts/misan-th-vf.ttf") format("truetype");
+  src: url("/assets/fonts/misan-th-vf.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "MiSans Latin";
-  src: url("fonts/misan-latin-vf.ttf") format("truetype");
+  src: url("/assets/fonts/misan-latin-vf.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -20,11 +20,26 @@ body {
   font-family: "MiSans Thai", "MiSans Latin";
 }
 
-.font-minecraft {
-  font-family: 'Minecraft Ten', sans-serif;
+.font-mc {
+  font-family: "Minecraft Ten", sans-serif;
 }
 
-@layer base {
+@layer components {
+  .header-1 {
+    @apply text-4xl font-bold;
+  }
+  .header-2 {
+    @apply text-3xl font-bold;
+  }
+  .header-3 {
+    @apply text-2xl font-bold;
+  }
+  p {
+    @apply text-[18px];
+  }
+}
+
+/* @layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
@@ -78,9 +93,9 @@ body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-}
+} */
 
-
+/* 
 @layer base {
   * {
     @apply border-border;
@@ -88,4 +103,4 @@ body {
   body {
     @apply bg-background text-foreground;
   }
-}
+} */

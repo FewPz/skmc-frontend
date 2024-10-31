@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="th">
-      <body>
+      <body className="text-customWhite">
         <main>{children}</main>
       </body>
     </html>

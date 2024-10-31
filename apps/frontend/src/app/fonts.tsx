@@ -9,5 +9,5 @@ export const misanLatinVF = localFont({
 });
 
 export const minecraftTen = localFont({
-  src: '/fonts/minecraft-ten.ttf'
+  src: '/assets/fonts/minecraft-ten.ttf'
 });
