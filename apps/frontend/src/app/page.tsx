@@ -5,7 +5,7 @@ export default function Page() {
   return (
     <>
       <Hero />
-      <div className="flex justify-center bg-white bg-no-repeat bg-cover bg-center min-h-dvh relative">
+      {/* <div className="flex justify-center bg-white bg-no-repeat bg-cover bg-center min-h-dvh relative">
         <div className="absolute inset-0">
           <div className="pt-4 text-black text-center">
             <span className="p-5 mt-8 mb-3 bg-[#49BF66] inline-block text-6xl">WHAT’S SK-MC</span>
@@ -27,7 +27,7 @@ export default function Page() {
           </div>
         
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
