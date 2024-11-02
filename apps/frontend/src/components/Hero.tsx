@@ -15,7 +15,6 @@ export default function Hero() {
             <Image
               src={"/assets/images/smilekrub.png"}
               alt="smilekrub"
-              layout="responsive"
               width={600}
               height={100}
             />
