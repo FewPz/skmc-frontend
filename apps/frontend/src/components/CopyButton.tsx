@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { FaCopy } from "react-icons/fa";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
 interface CopyButtonProps {
   label: string;
@@ -11,7 +11,7 @@ interface CopyButtonProps {
 // This function copies text to the clipboard and shows a toast
 function clickAction(text: string) {
   navigator.clipboard.writeText(text);
-  toast.success('Copied to clipboard');
+  toast.success("Copied to clipboard");
 }
 
 export default function CopyButton({ label, text }: CopyButtonProps) {

@@ -1,13 +1,13 @@
-import localFont from 'next/font/local';
+import localFont from "next/font/local";
 
 export const misanTHVF = localFont({
-  src: '/fonts/misan-th-vf.ttf'
+  src: "/fonts/misan-th-vf.ttf",
 });
 
 export const misanLatinVF = localFont({
-  src: '/fonts/misan-latin-vf.ttf'
+  src: "/fonts/misan-latin-vf.ttf",
 });
 
 export const minecraftTen = localFont({
-  src: '/assets/fonts/minecraft-ten.ttf'
+  src: "/assets/fonts/minecraft-ten.ttf",
 });

@@ -1,12 +1,12 @@
-import dotenv from 'dotenv';
-dotenv.config(); 
+import dotenv from "dotenv";
+dotenv.config();
 
-import { drizzle } from 'drizzle-orm/mysql2';
-import mysql from 'mysql2/promise';
+import { drizzle } from "drizzle-orm/mysql2";
+import mysql from "mysql2/promise";
 
 const databaseUrl = process.env.DATABASE_URL;
 if (!databaseUrl) {
-  throw new Error('DATABASE_URL is not defined in the environment');
+  throw new Error("DATABASE_URL is not defined in the environment");
 }
 
 export const db = (async () => {
@@ -16,7 +16,7 @@ export const db = (async () => {
       client: connection,
     });
   } catch (error) {
-    console.error('Failed to connect to the database:', error);
+    console.error("Failed to connect to the database:", error);
     throw error;
   }
 })();

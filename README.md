@@ -35,5 +35,5 @@ npm install -g pnpm
 
 The root package.json includes the following scripts:
 
-* pnpm dev: Runs the development servers for both frontend and backend.
-* pnpm build: Builds both the frontend and backend applications.
+- pnpm dev: Runs the development servers for both frontend and backend.
+- pnpm build: Builds both the frontend and backend applications.

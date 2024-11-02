@@ -1,5 +1,5 @@
-import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 
 dotenv.config();
 
@@ -10,17 +10,17 @@ if (!JWT_SECRET) {
 }
 
 export function generateToken(payload: object) {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: '1h' });
+  return jwt.sign(payload, JWT_SECRET, { expiresIn: "1h" });
 }
 
 export const verifyToken = (token: string): Promise<any> => {
-    return new Promise((resolve, reject) => {
-        jwt.verify(token, JWT_SECRET, (err, decoded) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(decoded);
-            }
-        });
+  return new Promise((resolve, reject) => {
+    jwt.verify(token, JWT_SECRET, (err, decoded) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(decoded);
+      }
     });
+  });
 };
