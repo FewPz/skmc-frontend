@@ -21,7 +21,7 @@ export default function Hero() {
             />
           </div>
           <div>
-            <CopyButton label="play.sk-mc.net" text="sk-server-ip" />
+            <CopyButton label="play.sk-mc.net" text="play.sk-mc.net" />
           </div>
           <div className="space-x-4">
             <Button variant="default" size="lg" className="font-mc">

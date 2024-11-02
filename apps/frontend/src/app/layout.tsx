@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import { Footer } from "@/components/ui/Footer";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Sk - MC",
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="th">
       <body className="min-h-screen overflow-x-hidden text-customWhite">
+        <Toaster position="top-center" reverseOrder={false} />
         <main>{children}</main>
         <Footer />
       </body>
