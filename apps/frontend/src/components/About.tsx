@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Title from "@/components/Title";
+import Title from "@/components/ui/title";
 
 export default function About() {
   return (

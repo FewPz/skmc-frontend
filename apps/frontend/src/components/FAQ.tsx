@@ -1,4 +1,4 @@
-import Title from "@/components/Title";
+import Title from "@/components/ui/title";
 
 export default function FAQ() {
   return (
