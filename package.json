@@ -6,6 +6,8 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
+    "install:frontend": "cd apps/frontend && pnpm install",
+    "install:backend": "cd apps/backend && pnpm install",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
