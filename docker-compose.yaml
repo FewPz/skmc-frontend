@@ -1,0 +1,58 @@
+version: "3"
+services:
+  nginx-proxy:
+    image: "jc21/nginx-proxy-manager:latest"
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "81:81"
+      - "443:443"
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+    networks:
+      - application-prod-network
+
+  backend:
+    container_name: backend
+    restart: always
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      GOOGLE_REDIRECT_URI: ${GOOGLE_REDIRECT_URI}
+      JWT_SECRET: ${JWT_SECRET}
+    build:
+      context: .
+      args:
+        DOCKER_BUILDKIT: 1
+        DATABASE_URL: ${DATABASE_URL}
+      dockerfile: ./apps/backend/Dockerfile
+    env_file:
+      - ./.env
+    networks:
+      - application-prod-network
+    ports:
+      - 4000:3001 # expose port with prod port
+
+  client:
+    container_name: client
+    restart: always
+    environment:
+      NODE_ENV: production
+    build:
+      context: .
+      dockerfile: ./apps/frontend/Dockerfile
+    env_file:
+      - ./.env
+    networks:
+      - application-prod-network
+    ports:
+      - 3000:3000 # expose port with prod port
+
+volumes:
+  backend-prod-data:
+    driver: local
+networks:
+  application-prod-network:
+    driver: bridge

@@ -45,6 +45,9 @@ importers:
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
+      dotenv-cli:
+        specifier: ^7.4.2
+        version: 7.4.2
       drizzle-orm:
         specifier: ^0.35.3
         version: 0.35.3(@libsql/client-wasm@0.14.0)(@types/react@18.3.11)(mysql2@3.11.3)(react@18.3.1)
@@ -106,6 +109,12 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
+      dotenv-cli:
+        specifier: ^7.4.2
+        version: 7.4.2
       framer-motion:
         specifier: ^11.11.11
         version: 11.11.11(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1210,6 +1219,14 @@ packages:
   doctrine@3.0.0:
     resolution: {integrity: sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==}
     engines: {node: '>=6.0.0'}
+
+  dotenv-cli@7.4.2:
+    resolution: {integrity: sha512-SbUj8l61zIbzyhIbg0FwPJq6+wjbzdn9oEtozQpZ6kW2ihCcapKVZj49oCT3oPM+mgQm+itgvUQcG5szxVrZTA==}
+    hasBin: true
+
+  dotenv-expand@10.0.0:
+    resolution: {integrity: sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==}
+    engines: {node: '>=12'}
 
   dotenv@16.4.5:
     resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
@@ -3703,6 +3720,15 @@ snapshots:
   doctrine@3.0.0:
     dependencies:
       esutils: 2.0.3
+
+  dotenv-cli@7.4.2:
+    dependencies:
+      cross-spawn: 7.0.3
+      dotenv: 16.4.5
+      dotenv-expand: 10.0.0
+      minimist: 1.2.8
+
+  dotenv-expand@10.0.0: {}
 
   dotenv@16.4.5: {}
 

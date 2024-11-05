@@ -6,11 +6,17 @@
   ],
   "tasks": {
     "build": {
+      "outputs": [
+        "dist/**",
+        ".next/**",
+        "!.next/cache/**",
+        "public/dist/**"
+      ],
       "dependsOn": [
         "^build"
       ],
-      "outputs": [
-        "dist/**"
+      "env": [
+        "NEXT_PUBLIC_BACKEND_URL"
       ]
     },
     "dev": {
