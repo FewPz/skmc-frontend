@@ -1,14 +1,14 @@
 export const navlinks = [
   {
-    title: "about",
+    title: "เกี่ยวกับ",
     path: "#about",
   },
   {
-    title: "what's new",
+    title: "ข่าวสารใหม่",
     path: "#news",
   },
   {
-    title: "faq",
+    title: "คำถามทั่วไป",
     path: "#faq",
   },
 ];

@@ -15,7 +15,7 @@ const config: Config = {
       xl: "1280px",
     },
     container: {
-      center: "true",
+      center: true,
       padding: "1rem",
     },
     extend: {
