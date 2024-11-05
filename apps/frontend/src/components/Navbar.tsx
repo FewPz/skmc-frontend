@@ -1,12 +1,20 @@
 import { navlinks } from "@/constants/navlinks";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { IoSunnyOutline } from "react-icons/io5";
+import { FaBarsStaggered } from "react-icons/fa6";
+import { MdClose } from "react-icons/md";
 
 export default function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const hanldeMenuOpen = (e: any) => {
+    e.preventDefault();
+    setIsMenuOpen(!isMenuOpen);
+  };
   return (
-    <nav className="glow-effect w-full max-w-screen-xl mx-auto py-3 px-8 bg-secondary/80 rounded-xl z-40 fixed top-8 left-0 right-0">
+    <nav className="glow-effect w-full max-w-screen-xl mx-auto py-3 px-8 bg-secondary/80 rounded-xl z-40 relative top-8">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-x-4">
           <div className="flex gap-x-2">
@@ -24,11 +32,13 @@ export default function Navbar() {
             <IoSunnyOutline />
           </Button> */}
         </div>
-        <div className="flex items-center gap-10">
+        {/* Desktop navbar */}
+        <div className="hidden lg:flex items-center gap-10">
           <ul className="flex gap-x-12">
             {navlinks.map((link, index) => (
               <li key={index}>
                 <Link
+                  onClick={hanldeMenuOpen}
                   href={link.path}
                   className="text-customWhite text-[20px] hover:text-primary transition-all duration-200"
                 >
@@ -43,6 +53,41 @@ export default function Navbar() {
             </Link>
           </Button>
         </div>
+        {/* Desktop navbar */}
+        {/* Mobile navbar */}
+        <div className="lg:hidden flex justify-end">
+          {isMenuOpen ? (
+            <Button size="icon" variant="icon" onClick={hanldeMenuOpen}>
+              <MdClose />
+            </Button>
+          ) : (
+            <Button size="icon" variant="icon" onClick={hanldeMenuOpen}>
+              <FaBarsStaggered />
+            </Button>
+          )}
+        </div>
+        {/* Mobile navbar */}
+        {isMenuOpen && (
+          <div className="lg:hidden glow-effect w-full absolute text-center top-[120%] left-0 bg-secondary/80 p-6 rounded-xl">
+            <ul className="flex flex-col gap-y-4">
+              {navlinks.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    href={link.path}
+                    className="text-customWhite text-[20px] hover:text-primary transition-all duration-200"
+                  >
+                    {link.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Button size="lg" className="mt-4" asChild>
+              <Link href="/login" className="text-customWhite">
+                เข้าสู่ระบบ
+              </Link>
+            </Button>
+          </div>
+        )}
       </div>
     </nav>
   );
