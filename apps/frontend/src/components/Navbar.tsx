@@ -6,16 +6,18 @@ import { IoSunnyOutline } from "react-icons/io5";
 
 export default function Navbar() {
   return (
-    <nav className="w-full max-w-screen-xl mx-auto py-3 px-8 bg-darkGreen/40 rounded-xl z-40 fixed top-8 left-0 right-0">
+    <nav className="glow-effect w-full max-w-screen-xl mx-auto py-3 px-8 bg-darkGreen/90 rounded-xl z-40 fixed top-8 left-0 right-0">
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-x-4">
           <div className="flex gap-x-2">
-            <Image
-              src="/assets/images/skLogo.svg"
-              alt="logo"
-              width={60}
-              height={60}
-            />
+            <Link href={"#header"}>
+              <Image
+                src="/assets/images/skLogo.svg"
+                alt="logo"
+                width={60}
+                height={60}
+              />
+            </Link>
             {/* <h1 className="font-mc text-5xl">smilekrub</h1> */}
           </div>
           {/* <Button size="icon" variant="icon">

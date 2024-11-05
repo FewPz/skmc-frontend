@@ -17,7 +17,7 @@ export default function FAQ() {
           <div>
             <Accordion type="single" collapsible>
               {questions.map((q, index) => (
-                <AccordionItem value={String(index)}>
+                <AccordionItem key={index} value={String(index)}>
                   <AccordionTrigger>{q.header}</AccordionTrigger>
                   <AccordionContent>
                     <p className="p-4 text-sm">{q.content}</p>
