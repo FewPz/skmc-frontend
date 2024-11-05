@@ -45,9 +45,9 @@ body {
 
 .glow-effect {
   box-shadow:
-    0 0 5px #3fa659,
-    0 0 15px #3fa659,
-    0 0 30px #3fa659;
+    0 0 5px #27733A,
+    0 0 15px #27733A,
+    0 0 30px #27733A;
 }
 
 /* @layer base {

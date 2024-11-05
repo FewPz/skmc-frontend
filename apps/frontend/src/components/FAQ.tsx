@@ -10,7 +10,7 @@ import { questions } from "@/constants/faq";
 
 export default function FAQ() {
   return (
-    <section id="faq" className="min-h-dvh">
+    <section id="faq" className="min-h-dvh flex items-center">
       <Container>
         <div>
           <Title>FAQ</Title>
