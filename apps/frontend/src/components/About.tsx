@@ -1,11 +1,11 @@
 import Image from "next/image";
-import Title from "@/components/ui/title";
+import Title from "@/components/ui/Title";
 
 export default function About() {
   return (
     <div className="flex justify-center relative bg-white bg-no-repeat bg-cover bg-center min-h-dvh">
       <div id="about" className="absolute inset-0">
-        <Title text="WHAT’S SK-MC" color="black" />
+        <Title>WHAT’S SK-MC</Title>
         <div className="flex items-start p-4 mx-44">
           <div className="flex-shrink-0">
             <Image
