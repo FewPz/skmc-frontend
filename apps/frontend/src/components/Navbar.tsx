@@ -16,11 +16,11 @@ export default function Navbar() {
               width={60}
               height={60}
             />
-            <h1 className="font-mc text-5xl">smilekrub</h1>
+            {/* <h1 className="font-mc text-5xl">smilekrub</h1> */}
           </div>
-          <Button size="icon" variant="icon">
+          {/* <Button size="icon" variant="icon">
             <IoSunnyOutline />
-          </Button>
+          </Button> */}
         </div>
         <div className="flex items-center gap-10">
           <ul className="flex gap-x-12">
@@ -28,16 +28,16 @@ export default function Navbar() {
               <li key={index}>
                 <Link
                   href={link.path}
-                  className="text-customWhite font-mc text-[20px] hover:text-primary transition-all duration-200"
+                  className="text-customWhite text-[20px] hover:text-primary transition-all duration-200"
                 >
                   {link.title}
                 </Link>
               </li>
             ))}
           </ul>
-          <Button size="lg" asChild>
-            <Link href="/login" className="font-mc text-customWhite">
-              Login
+          <Button size="lg" className="" asChild>
+            <Link href="/login" className="text-customWhite">
+              เข้าสู่ระบบ
             </Link>
           </Button>
         </div>
