@@ -8,11 +8,10 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
 export default function Hero() {
-  
   const fadeIn = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { duration: 1 } },
-  }
+  };
 
   return (
     <header className="bg-[url(/assets/images/hero_bg.png)] bg-no-repeat bg-cover bg-center min-h-screen relative">

@@ -3,11 +3,10 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
+    "build": "dotenv -e ./.env -- turbo run build --filter=frontend --filter=backend",
+    "dev": "dotenv -e ./.env -- turbo run dev --filter=frontend --filter=backend",
     "lint": "turbo run lint",
-    "install:frontend": "cd apps/frontend && pnpm install",
-    "install:backend": "cd apps/backend && pnpm install",
+    "install": "pnpm install --recursive",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
