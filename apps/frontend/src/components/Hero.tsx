@@ -8,6 +8,12 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
 export default function Hero() {
+  
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 1 } },
+  }
+
   return (
     <header className="bg-[url(/assets/images/hero_bg.png)] bg-no-repeat bg-cover bg-center min-h-screen relative">
       <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -34,10 +40,21 @@ export default function Hero() {
               />
             </motion.div>
           </div>
-          <div className="text-center">
+          <motion.div
+            className="text-center"
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+          >
             <CopyButton label="play.sk-mc.net" text="play.sk-mc.net" />
-          </div>
-          <div className="space-x-4 flex flex-wrap justify-center">
+          </motion.div>
+
+          <motion.div
+            className="space-x-4 flex flex-wrap justify-center"
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+          >
             <Button
               variant="default"
               size="lg"
@@ -52,7 +69,7 @@ export default function Hero() {
             >
               Learn More
             </Button>
-          </div>
+          </motion.div>
         </div>
       </Container>
     </header>
