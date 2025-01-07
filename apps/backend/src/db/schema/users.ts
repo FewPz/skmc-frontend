@@ -4,12 +4,13 @@ import timestamps from "@utils/softdate.helpers";
 import { z } from "zod";
 
 export const users = table("users", {
-  id: t.int().autoincrement().primaryKey(),
-  name: t.text("name").notNull(),
-  email: t.text("email").notNull(),
-  picture: t.text("picture").notNull(),
+  id: t.serial("id").primaryKey(),
+  googleId: t.varchar("googleId", { length: 255 }).notNull().unique(),
+  name: t.varchar("name", { length: 255 }).notNull(),
+  email: t.varchar("email", { length: 255 }).notNull().unique(),
+  picture: t.varchar("picture", { length: 255 }).notNull(),
   role: t
-    .mysqlEnum(["MEMBER", "MODERATOR", "ADMIN"])
+    .mysqlEnum("role", ["MEMBER", "MODERATOR", "ADMIN"])
     .notNull()
     .default("MEMBER"),
   ...timestamps,
