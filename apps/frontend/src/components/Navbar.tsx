@@ -48,7 +48,7 @@ export default function Navbar() {
             ))}
           </ul>
           <Button size="lg" className="" asChild>
-            <Link href="/login" className="text-customWhite">
+            <Link href="#" className="text-customWhite">
               เข้าสู่ระบบ
             </Link>
           </Button>
@@ -82,7 +82,7 @@ export default function Navbar() {
               ))}
             </ul>
             <Button size="lg" className="mt-4" asChild>
-              <Link href="/login" className="text-customWhite">
+              <Link href="#" className="text-customWhite">
                 เข้าสู่ระบบ
               </Link>
             </Button>
