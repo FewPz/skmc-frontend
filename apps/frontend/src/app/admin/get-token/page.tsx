@@ -20,7 +20,7 @@ export default function Page() {
                 placeholder="Enter a number of key."
                 className="text-customBlack"
               />
-              <Button variant="default" className="font-mc w-full">
+              <Button  variant="default" className="font-mc w-full">
                 Generate Key
               </Button>
               <Table />

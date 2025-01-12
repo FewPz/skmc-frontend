@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import passport from "passport";
 import AuthRoute from "./routes/AuthRoute";
-// import KeygenRoute from "./routes/KeygenRoute";
+import genKeyRoute from "./routes/genKeyRoute";
 
 const app = express();
 const port = 3001;
@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const version = "v1";
 app.use(`/${version}/api/auth`, AuthRoute);
-// app.use(`/${version}/api/keygen`, KeygenRoute);
+app.use(`/${version}/api/keygen`, genKeyRoute);
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);

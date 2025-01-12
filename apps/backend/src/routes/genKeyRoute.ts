@@ -1,8 +1,21 @@
-import { Router } from "express";
-import { generateKey } from "@utils/keygen";
+import express from "express";
+import { db } from "../db/db";
+import { keys } from "../db/schema/keys";
+import { generateKey } from "../utils/keygen";
 
-const adminRouter = Router();
+const router = express.Router();
 
-adminRouter.post("/generate-key", generateKey);
+router.post("/", async (req, res) => {
+  try {
+    const key = generateKey(32);
+    const result = await db.insert(keys).values({
+      key,
+    });
+    res.json({ success: true, result });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false });
+  }
+});
 
-export default adminRouter;
+export default router;
