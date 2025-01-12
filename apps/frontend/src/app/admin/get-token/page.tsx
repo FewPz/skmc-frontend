@@ -1,6 +1,9 @@
+"use client";
+
 import Container from "@/components/Container";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import Table from "@/components/Table";
 
 export default function Page() {
   return (
@@ -20,6 +23,7 @@ export default function Page() {
               <Button variant="default" className="font-mc w-full">
                 Generate Key
               </Button>
+              <Table />
             </div>
           </div>
         </div>
