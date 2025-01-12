@@ -1,10 +1,12 @@
 import express from "express";
+import cors from "cors";
 import passport from "passport";
 import AuthRoute from "./routes/AuthRoute";
 // import KeygenRoute from "./routes/KeygenRoute";
 
 const app = express();
 const port = 3001;
+app.use(cors());
 
 import "./config/passport";
 

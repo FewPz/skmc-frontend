@@ -1,11 +1,10 @@
 import * as t from "drizzle-orm/mysql-core";
 import { mysqlTable as table } from "drizzle-orm/mysql-core";
-import timestamps from "@utils/softdate.helpers";
+import { timestamps } from "../../utils/softdate.helpers";
 import { z } from "zod";
 
 export const users = table("users", {
   id: t.serial("id").primaryKey(),
-  googleId: t.varchar("googleId", { length: 255 }).notNull().unique(),
   name: t.varchar("name", { length: 255 }).notNull(),
   email: t.varchar("email", { length: 255 }).notNull().unique(),
   picture: t.varchar("picture", { length: 255 }).notNull(),

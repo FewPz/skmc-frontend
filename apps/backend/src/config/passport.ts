@@ -5,6 +5,7 @@ import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
 import { db } from "../db/db";
 import { users } from "../db/schema/users";
+import { eq } from "drizzle-orm";
 
 dotenv.config();
 
@@ -22,27 +23,30 @@ if (!GOOGLE_CLIENT_ID || !GOOGLE_CLIENT_SECRET || !GOOGLE_REDIRECT_URI) {
 passport.use(
   new GoogleStrategy(
     {
-      clientID: GOOGLE_CLIENT_ID,
-      clientSecret: GOOGLE_CLIENT_SECRET,
-      callbackURL: GOOGLE_REDIRECT_URI,
+      clientID: GOOGLE_CLIENT_ID!,
+      clientSecret: GOOGLE_CLIENT_SECRET!,
+      callbackURL: GOOGLE_REDIRECT_URI!,
       scope: ["email", "profile", "openid"],
     },
     async (accessToken, refreshToken, profile, done) => {
-      const user = {
-        googleId: profile.id,
-        displayName: profile.displayName,
-        emails: profile.emails?.[0].value,
-        picture: profile.photos?.[0].value,
-      };
-      const checkUser = await db
-        .select()
-        .from(users)
-        .where({ email: user.emails });
-      if (!checkUser) {
-        await db.insert(users).values(user);
+      try {
+        const user = await db
+          .select()
+          .from(users)
+          .where(eq(users.email, profile.emails![0].value));
+        if (!user) {
+          const newUser = await db.insert(users).values({
+            name: profile.displayName,
+            email: profile.emails![0].value,
+            picture: profile.photos![0].value,
+          });
+          console.log("New user created: ", newUser);
+          return done(null, newUser);
+        }
+      } catch (error) {
+        console.log(error);
+        return done(null, false, { message: error });
       }
-      const token = generateToken(user);
-      done(null, { token, user });
     }
   )
 );
