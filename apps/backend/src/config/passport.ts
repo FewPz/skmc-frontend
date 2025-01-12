@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
+import { db } from "../db/db";
+import { users } from "../db/schema/users";
 
 dotenv.config();
 
@@ -13,7 +15,7 @@ const JWT_SECRET = process.env.JWT_SECRET as string;
 
 if (!GOOGLE_CLIENT_ID || !GOOGLE_CLIENT_SECRET || !GOOGLE_REDIRECT_URI) {
   throw new Error(
-    "GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, and GOOGLE_CALLBACK_URL must be provided",
+    "GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, and GOOGLE_CALLBACK_URL must be provided"
   );
 }
 
@@ -25,17 +27,24 @@ passport.use(
       callbackURL: GOOGLE_REDIRECT_URI,
       scope: ["email", "profile", "openid"],
     },
-    (accessToken, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
       const user = {
-        id: profile.id,
+        googleId: profile.id,
         displayName: profile.displayName,
-        emails: profile.emails,
+        emails: profile.emails?.[0].value,
         picture: profile.photos?.[0].value,
       };
+      const checkUser = await db
+        .select()
+        .from(users)
+        .where({ email: user.emails });
+      if (!checkUser) {
+        await db.insert(users).values(user);
+      }
       const token = generateToken(user);
       done(null, { token, user });
-    },
-  ),
+    }
+  )
 );
 
 passport.use(
@@ -51,8 +60,8 @@ passport.use(
       } catch (error) {
         return done(error, null);
       }
-    },
-  ),
+    }
+  )
 );
 
 passport.serializeUser((user: any, done) => {
