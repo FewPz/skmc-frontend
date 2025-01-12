@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { IoSunnyOutline } from "react-icons/io5";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
+import AuthButton from "./AuthButton";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,11 +48,12 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-          <Button size="lg" className="" asChild>
+          {/* <Button size="lg" className="" asChild>
             <Link href="#" className="text-customWhite">
               เข้าสู่ระบบ
             </Link>
-          </Button>
+          </Button> */}
+          <AuthButton />
         </div>
         {/* Desktop navbar */}
         {/* Mobile navbar */}
