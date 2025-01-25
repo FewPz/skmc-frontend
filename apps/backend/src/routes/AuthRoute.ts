@@ -1,5 +1,7 @@
 import { Router } from "express";
 import passport from "passport";
+import dotenv from "dotenv";
+dotenv.config();
 
 const router = Router();
 
@@ -14,11 +16,11 @@ router.get(
     failureRedirect: "http://localhost:3000/",
   }),
   (req, res) => {
-    res.redirect("http://localhost:3000/");
+    res.redirect(`http://localhost:3000/`);
   }
 );
 
-router.get("logut", (req, res) => {
+router.get("/logut", (req, res) => {
   req.logout((err) => {
     if (err) {
       return res.status(500).json({ message: err });

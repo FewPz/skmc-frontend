@@ -25,3 +25,8 @@ export const userSchema = z.object({
   createdAt: z.string().optional(),
   updatedAt: z.string().optional(),
 });
+
+export const userJwtSchema = z.object({
+  name: z.string(),
+  role: z.enum(["MEMBER", "MODERATOR", "ADMIN"]).default("MEMBER"),
+});
