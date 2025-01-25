@@ -1,6 +1,7 @@
 import { int, mysqlEnum, mysqlTable, varchar } from "drizzle-orm/mysql-core";
 import { timestamps } from "../utils/softdate.helpers";
 import { z } from "zod";
+import { relations } from "drizzle-orm";
 
 export const users = mysqlTable("users", {
   id: int("id").primaryKey().autoincrement(),
@@ -14,6 +15,10 @@ export const users = mysqlTable("users", {
   ...timestamps,
 });
 
+export const usersRelations = relations(users, ({ many }) => ({
+  smileKeys: many(smileKeys),
+}));
+
 // Schema for the user object
 export const userSchema = z.object({
   id: z.number().optional(),
@@ -26,7 +31,22 @@ export const userSchema = z.object({
   updatedAt: z.string().optional(),
 });
 
+// Schema for the user object with JWT token
 export const userJwtSchema = z.object({
   name: z.string(),
   role: z.enum(["MEMBER", "MODERATOR", "ADMIN"]).default("MEMBER"),
 });
+
+export const smileKeys = mysqlTable("smileKeys", {
+  id: int("id").primaryKey().autoincrement(),
+  key: varchar("key", { length: 32 }).notNull(),
+  owner: varchar("owner", { length: 255 }).unique(),
+  ...timestamps,
+});
+
+export const smileKeysRelations = relations(smileKeys, ({ one }) => ({
+  owner: one(users, {
+    fields: [smileKeys.owner],
+    references: [users.email],
+  }),
+}));
