@@ -11,7 +11,6 @@ const port = 3001;
 app.use(
   cors({
     origin: process.env.FRONTEND_URL,
-    credentials: true,
   })
 );
 

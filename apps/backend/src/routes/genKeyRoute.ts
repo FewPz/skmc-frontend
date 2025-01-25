@@ -10,7 +10,7 @@ export function generateSecureKey(): string {
 const router = express.Router();
 
 router.post("/", async (req, res) => {
-  const { count = 3 } = req.body;
+  const { count } = req.body;
   try {
     const keys = Array.from({ length: count }, () => generateSecureKey());
     await db.insert(smileKeys).values(keys.map((key) => ({ key })));

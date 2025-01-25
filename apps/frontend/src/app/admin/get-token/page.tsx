@@ -4,8 +4,22 @@ import Container from "@/components/Container";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Table from "@/components/Table";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Page() {
+  const [count, setCount] = useState(1);
+  const [data, setData] = useState([]);
+  const handleGenerateKey = async () => {
+    try {
+      const response = await axios.post("http://localhost:3001/v1/api/keygen", {
+        count: count,
+      });
+      setData(response.data.keys);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div className="min-h-screen">
       <Container>
@@ -16,11 +30,17 @@ export default function Page() {
                 Key Generator
               </h1>
               <Input
-                type="text"
+                value={count}
+                onChange={(e) => setCount(parseInt(e.target.value))}
+                type="number"
                 placeholder="Enter a number of key."
                 className="text-customBlack"
               />
-              <Button  variant="default" className="font-mc w-full">
+              <Button
+                onClick={handleGenerateKey}
+                variant="default"
+                className="font-mc w-full"
+              >
                 Generate Key
               </Button>
               <Table />
