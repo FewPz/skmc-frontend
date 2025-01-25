@@ -5,21 +5,26 @@ const router = Router();
 
 router.get(
   "/google",
-  passport.authenticate("google", {
-    scope: ["email", "profile", "openid"],
-    session: false,
-  })
+  passport.authenticate("google", { scope: ["email", "profile"] })
 );
+
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    session: false,
-    failureRedirect: "http://localhost:3000/login",
+    failureRedirect: "http://localhost:3000/",
   }),
   (req, res) => {
-    res.send(req.user);
-    res.redirect("http://localhost:3000");
+    res.redirect("http://localhost:3000/");
   }
 );
+
+router.get("logut", (req, res) => {
+  req.logout((err) => {
+    if (err) {
+      return res.status(500).json({ message: err });
+    }
+    res.redirect("http://localhost:3000/");
+  });
+});
 
 export default router;
