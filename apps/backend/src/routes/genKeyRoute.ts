@@ -10,12 +10,11 @@ export function generateSecureKey(): string {
 const router = express.Router();
 
 router.post("/", async (req, res) => {
+  const { count = 3 } = req.body;
   try {
-    const genratedKey = generateSecureKey();
-    await db.insert(smileKeys).values({
-      key: genratedKey,
-    });
-    res.status(200).json({ key: genratedKey });
+    const keys = Array.from({ length: count }, () => generateSecureKey());
+    await db.insert(smileKeys).values(keys.map((key) => ({ key })));
+    res.status(200).json({ keys });
   } catch (error) {
     console.log(error);
     res.status(500).send("Internal Server Error");
