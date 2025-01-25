@@ -14,7 +14,7 @@ passport.use(
     },
     async (accessToken: any, refreshToken: any, profile: any, done: any) => {
       try {
-        let user = getUserByGoogleId(profile.id);
+        let user = await getUserByGoogleId(profile.id);
         if (!user) {
           await createUser({
             googleId: profile.id,
@@ -22,7 +22,7 @@ passport.use(
             email: profile.emails[0].value,
             picture: profile.photos[0].value,
           });
-          user = getUserByGoogleId(profile.id);
+          user = await getUserByGoogleId(profile.id);
         }
         done(null, user);
       } catch (error) {

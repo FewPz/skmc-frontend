@@ -16,12 +16,12 @@ export const users = mysqlTable("users", {
 
 // Schema for the user object
 export const userSchema = z.object({
-  id: z.number(),
+  id: z.number().optional(),
   googleId: z.string(),
   name: z.string(),
   email: z.string(),
   picture: z.string(),
-  role: z.enum(["MEMBER", "MODERATOR", "ADMIN"]),
-  createdAt: z.string(),
-  updatedAt: z.string(),
+  role: z.enum(["MEMBER", "MODERATOR", "ADMIN"]).default("MEMBER"),
+  createdAt: z.string().optional(),
+  updatedAt: z.string().optional(),
 });
