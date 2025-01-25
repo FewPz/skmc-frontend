@@ -1,20 +1,24 @@
 import express from "express";
+import crypto from "crypto";
 import { db } from "../db/db";
-import { keys } from "../db/schema/keys";
-import { generateKey } from "../utils/keygen";
+import { smileKeys } from "../db/schema";
+
+export function generateSecureKey(): string {
+  return crypto.randomBytes(16).toString("hex");
+}
 
 const router = express.Router();
 
 router.post("/", async (req, res) => {
   try {
-    const key = generateKey(32);
-    const result = await db.insert(keys).values({
-      key,
+    const genratedKey = generateSecureKey();
+    await db.insert(smileKeys).values({
+      key: genratedKey,
     });
-    res.json({ success: true, result });
+    res.status(200).json({ key: genratedKey });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false });
+    console.log(error);
+    res.status(500).send("Internal Server Error");
   }
 });
 
