@@ -1,8 +1,8 @@
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
+
 import { createUser, getUserByGoogleId } from "../services/userServices";
 import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
-import { userJwtSchema } from "../db/schema";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -36,18 +36,27 @@ passport.use(
 
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: process.env.JWT_SECRET || "",
+  secretOrKey: process.env.JWT_SECRET!,
 };
 
 passport.use(
-  new JwtStrategy(jwtOptions, (payload: typeof userJwtSchema, done: any) => {
-    const user = payload;
-    if (user) {
-      return done(null, user);
-    } else {
-      return done(null, false);
+  new JwtStrategy(
+    {
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      secretOrKey: process.env.JWT_SECRET!,
+    },
+    async (payload, done) => {
+      try {
+        const user = await getUserByGoogleId(payload.googleId);
+        if (!user) {
+          return done(null, false);
+        }
+        done(null, user);
+      } catch (error) {
+        done(error, null);
+      }
     }
-  })
+  )
 );
 
 passport.serializeUser((user: any, done: any) => {

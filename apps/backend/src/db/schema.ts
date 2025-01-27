@@ -37,6 +37,8 @@ export const userJwtSchema = z.object({
   role: z.enum(["MEMBER", "MODERATOR", "ADMIN"]).default("MEMBER"),
 });
 
+export type userJwt = z.infer<typeof userJwtSchema>;
+
 export const smileKeys = mysqlTable("smileKeys", {
   id: int("id").primaryKey().autoincrement(),
   key: varchar("key", { length: 32 }).notNull(),

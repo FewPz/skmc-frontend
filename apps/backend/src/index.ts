@@ -4,6 +4,7 @@ import passport from "passport";
 import AuthRoute from "./routes/AuthRoute";
 import genKeyroute from "./routes/genKeyRoute";
 import session from "express-session";
+
 import "./config/passport";
 
 const app = express();
@@ -11,6 +12,7 @@ const port = 3001;
 app.use(
   cors({
     origin: process.env.FRONTEND_URL,
+    credentials: true,
   })
 );
 

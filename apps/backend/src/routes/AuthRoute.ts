@@ -1,6 +1,7 @@
 import { Router } from "express";
 import passport from "passport";
 import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
 dotenv.config();
 
 const router = Router();
@@ -16,6 +17,18 @@ router.get(
     failureRedirect: "http://localhost:3000/",
   }),
   (req, res) => {
+    const user = req.user as any;
+    const token = jwt.sign(
+      {
+        name: user.name,
+        role: user.role,
+      },
+      process.env.JWT_SECRET!,
+      {
+        expiresIn: "1h",
+      }
+    );
+    res.cookie("token", token);
     res.redirect(`http://localhost:3000/`);
   }
 );
