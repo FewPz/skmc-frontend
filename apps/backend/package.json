@@ -19,6 +19,7 @@
     "@types/passport-google-oauth20": "^2.0.16",
     "@types/passport-jwt": "^4.0.1",
     "@types/passport-local": "^1.0.38",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "dotenv-cli": "^7.4.2",
@@ -36,6 +37,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.8",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "drizzle-kit": "^0.26.2",

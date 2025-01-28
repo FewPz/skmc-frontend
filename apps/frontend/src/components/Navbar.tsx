@@ -3,10 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { IoSunnyOutline } from "react-icons/io5";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
 import AuthButton from "./AuthButton";
+import { useAuth } from "@/context/AuthContext";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,6 +14,11 @@ export default function Navbar() {
     e.preventDefault();
     setIsMenuOpen(!isMenuOpen);
   };
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   return (
     <nav className="glow-effect w-full max-w-screen-xl mx-auto py-3 px-8 bg-secondary/80 rounded-xl z-40 relative top-8">
       <div className="flex justify-between items-center">
@@ -48,12 +53,7 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-          {/* <Button size="lg" className="" asChild>
-            <Link href="#" className="text-customWhite">
-              เข้าสู่ระบบ
-            </Link>
-          </Button> */}
-          <AuthButton />
+          {user ? "Hello" + user.name : <AuthButton />}
         </div>
         {/* Desktop navbar */}
         {/* Mobile navbar */}

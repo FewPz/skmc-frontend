@@ -42,4 +42,18 @@ router.get("/logut", (req, res) => {
   });
 });
 
+router.get("/me", (req: any, res: any) => {
+  const token = req.cookies.token;
+  if (!token) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+
+  try {
+    const user = jwt.verify(token, process.env.JWT_SECRET!);
+    return res.json({ user });
+  } catch (err) {
+    return res.status(500).json({ message: err });
+  }
+});
+
 export default router;

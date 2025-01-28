@@ -3,6 +3,7 @@ import cors from "cors";
 import passport from "passport";
 import AuthRoute from "./routes/AuthRoute";
 import genKeyroute from "./routes/genKeyRoute";
+import cookieParser from "cookie-parser";
 import session from "express-session";
 
 import "./config/passport";
@@ -15,6 +16,7 @@ app.use(
     credentials: true,
   })
 );
+app.use(cookieParser());
 
 app.use(
   session({
