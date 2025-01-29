@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import News from "@/components/News";
 import FAQ from "@/components/FAQ";
+import { Footer } from "@/components/ui/Footer";
 
 export default function Page() {
   return (
@@ -10,6 +11,7 @@ export default function Page() {
       <About />
       <News />
       <FAQ />
+      <Footer />
     </>
   );
 }

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
 import "./globals.css";
-import { Footer } from "@/components/ui/Footer";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "@/context/AuthContext";
 
@@ -21,7 +20,6 @@ export default function RootLayout({
         <AuthProvider>
           <Toaster position="top-center" reverseOrder={false} />
           <main>{children}</main>
-          <Footer />
         </AuthProvider>
       </body>
     </html>

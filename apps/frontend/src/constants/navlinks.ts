@@ -12,3 +12,14 @@ export const navlinks = [
     path: "#faq",
   },
 ];
+
+export const adminNavlinks = [
+  {
+    title: "users",
+    path: "/admin/users",
+  },
+  {
+    title: "news",
+    path: "/admin/news",
+  },
+];
