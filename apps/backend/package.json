@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@trpc/server": "^10.45.2",
     "@types/express-session": "^1.18.1",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^20",

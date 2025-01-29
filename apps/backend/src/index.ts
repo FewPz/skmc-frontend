@@ -5,8 +5,10 @@ import AuthRoute from "./routes/AuthRoute";
 import genKeyroute from "./routes/genKeyRoute";
 import cookieParser from "cookie-parser";
 import session from "express-session";
-
 import "./config/passport";
+import { createExpressMiddleware } from "@trpc/server/adapters/express";
+import { createContext } from "./trpc/context";
+import { appRouter } from "./trpc/routers";
 
 const app = express();
 const port = 3001;
@@ -39,6 +41,13 @@ app.use(express.urlencoded({ extended: true }));
 const version = "v1";
 app.use(`/${version}/api/auth`, AuthRoute);
 app.use(`/${version}/api/keygen`, genKeyroute);
+app.use(
+  "/trpc",
+  createExpressMiddleware({
+    router: appRouter,
+    createContext,
+  })
+);
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
