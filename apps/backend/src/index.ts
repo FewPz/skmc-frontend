@@ -2,7 +2,6 @@ import express from "express";
 import cors from "cors";
 import passport from "passport";
 import AuthRoute from "./routes/AuthRoute";
-import genKeyroute from "./routes/genKeyRoute";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import "./config/passport";
@@ -40,7 +39,6 @@ app.use(express.urlencoded({ extended: true }));
 
 const version = "v1";
 app.use(`/${version}/api/auth`, AuthRoute);
-app.use(`/${version}/api/keygen`, genKeyroute);
 app.use(
   "/trpc",
   createExpressMiddleware({
