@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "@/context/AuthContext";
+import { TrpcProvider } from "@/utils/trpcProvider";
 
 export const metadata: Metadata = {
   title: "Sk - MC",
@@ -17,10 +18,12 @@ export default function RootLayout({
   return (
     <html lang="th">
       <body className="min-h-screen overflow-x-hidden text-customWhite">
-        <AuthProvider>
-          <Toaster position="top-center" reverseOrder={false} />
-          <main>{children}</main>
-        </AuthProvider>
+        <TrpcProvider>
+          <AuthProvider>
+            <Toaster position="top-center" reverseOrder={false} />
+            <main>{children}</main>
+          </AuthProvider>
+        </TrpcProvider>
       </body>
     </html>
   );
