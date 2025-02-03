@@ -1,12 +1,15 @@
-"use client";
+import { client } from "@/lib/client";
 
-import { trpc } from "@/utils/trpc";
-
-export default function Page() {
+export default async function Page() {
+  const data = await client.user.getUser.query();
   return (
     <div className="text-4xl fon-semibold text-customBlack">
       This is a users page
-      {/* <p>{userQuery.data?.name}</p> */}
+      <ul>
+        {data.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import AuthRoute from "./routes/AuthRoute";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import "./config/passport";
-import { createExpressMiddleware } from "@trpc/server/adapters/express";
+import * as trpcExpress from "@trpc/server/adapters/express";
 import { createContext } from "./trpc/context";
 import { appRouter } from "./trpc/routers";
 
@@ -41,7 +41,7 @@ const version = "v1";
 app.use(`/${version}/api/auth`, AuthRoute);
 app.use(
   "/trpc",
-  createExpressMiddleware({
+  trpcExpress.createExpressMiddleware({
     router: appRouter,
     createContext,
   })
