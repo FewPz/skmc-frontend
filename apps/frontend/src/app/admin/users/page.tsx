@@ -1,6 +1,6 @@
 import { client } from "@/lib/client";
 import Container from "@/components/Container";
-import Table from "@/components/Table";
+import Table from "@/components/UserTable";
 
 export default async function Page() {
   const data = await client.user.getUser.query();

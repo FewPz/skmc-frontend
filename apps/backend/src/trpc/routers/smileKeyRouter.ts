@@ -9,7 +9,14 @@ import { z } from "zod";
 
 export const smileKeysRouter = router({
   getSmileKeys: publicProcedure.query(() => {
-    return db.select().from(smileKeys);
+    return db
+      .select({
+        id: smileKeys.id,
+        key: smileKeys.key,
+        owner: smileKeys.owner,
+        createdAt: smileKeys.created_at,
+      })
+      .from(smileKeys);
   }),
   createSmileKeys: publicProcedure
     .input(z.object({ number: z.number() }))

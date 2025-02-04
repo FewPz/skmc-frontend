@@ -32,11 +32,7 @@ export default function Navbar() {
                 height={60}
               />
             </Link>
-            {/* <h1 className="font-mc text-5xl">smilekrub</h1> */}
           </div>
-          {/* <Button size="icon" variant="icon">
-            <IoSunnyOutline />
-          </Button> */}
         </div>
         {/* Desktop navbar */}
         <div className="hidden lg:flex items-center gap-10">

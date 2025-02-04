@@ -9,7 +9,7 @@ import {
   createColumnHelper,
 } from "@tanstack/react-table";
 
-interface Users {
+interface User {
   id: number;
   name: string;
   email: string;
@@ -17,10 +17,10 @@ interface Users {
   createdAt: string;
 }
 
-const columnHelper = createColumnHelper<Users>();
+const columnHelper = createColumnHelper<User>();
 
-export default function Table() {
-  const [data, setData] = useState<Users[]>([]);
+export default function UserTable() {
+  const [data, setData] = useState<User[]>([]);
   useEffect(() => {
     const fetUserData = async () => {
       const res = await client.user.getUser.query();
