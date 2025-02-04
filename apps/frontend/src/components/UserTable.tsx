@@ -7,6 +7,8 @@ import {
   getCoreRowModel,
   flexRender,
   createColumnHelper,
+  PaginationState,
+  getPaginationRowModel,
 } from "@tanstack/react-table";
 
 interface User {
@@ -21,6 +23,10 @@ const columnHelper = createColumnHelper<User>();
 
 export default function UserTable() {
   const [data, setData] = useState<User[]>([]);
+  const [pagination, setPagination] = useState<PaginationState>({
+    pageIndex: 0,
+    pageSize: 10,
+  });
   useEffect(() => {
     const fetUserData = async () => {
       const res = await client.user.getUser.query();
@@ -51,6 +57,11 @@ export default function UserTable() {
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    onPaginationChange: setPagination,
+    state: {
+      pagination,
+    },
   });
   return (
     <div className="overflow-x-auto p-4">
@@ -108,6 +119,24 @@ export default function UserTable() {
           ))}
         </tbody>
       </table>
+      <div className="flex gap-4 mt-4">
+        <button
+          onClick={() => {
+            table.previousPage();
+          }}
+          className="py-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200"
+        >
+          Prev Page
+        </button>
+        <button
+          onClick={() => {
+            table.nextPage();
+          }}
+          className="py-2 text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200"
+        >
+          Next Page
+        </button>
+      </div>
     </div>
   );
 }
