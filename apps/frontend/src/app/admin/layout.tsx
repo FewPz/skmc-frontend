@@ -1,9 +1,10 @@
-import Sidebar from "@/components/admin/Sidebar";
-import SidebarItem from "@/components/admin/SidebarItem";
+import Sidebar from "@/components/Sidebar";
+import SidebarItem from "@/components/SidebarItem";
 // Icons
 import { FaHome } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
 import { IoKeySharp } from "react-icons/io5";
+import { FaRegNewspaper } from "react-icons/fa6";
 
 export default function AdminLayout({
   children,
@@ -24,6 +25,11 @@ export default function AdminLayout({
             title="SmileKeys"
             icon={<IoKeySharp size={24} />}
             link="/admin/smilekeys"
+          />
+          <SidebarItem
+            title="News"
+            icon={<FaRegNewspaper size={24} />}
+            link="/admin/news"
           />
         </Sidebar>
       </div>
