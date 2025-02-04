@@ -7,7 +7,15 @@ import { eq } from "drizzle-orm";
 import { z } from "zod";
 export const userRouter = router({
   getUser: publicProcedure.query(() => {
-    return db.select().from(users);
+    return db
+      .select({
+        id: users.id,
+        name: users.name,
+        email: users.email,
+        role: users.role,
+        createdAt: users.created_at,
+      })
+      .from(users);
   }),
   deleteUser: publicProcedure
     .input(z.object({ id: z.number() }))

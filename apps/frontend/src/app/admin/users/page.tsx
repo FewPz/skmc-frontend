@@ -1,15 +1,17 @@
 import { client } from "@/lib/client";
+import Container from "@/components/Container";
+import Table from "@/components/Table";
 
 export default async function Page() {
   const data = await client.user.getUser.query();
   return (
-    <div className="text-4xl fon-semibold text-customBlack">
-      This is a users page
-      <ul>
-        {data.map((user) => (
-          <li key={user.id}>{user.name}</li>
-        ))}
-      </ul>
+    <div className="py-8">
+      <Container>
+        <div className="space-y-4">
+          <h1 className="text-2xl font-semibold">All Users</h1>
+          <Table />
+        </div>
+      </Container>
     </div>
   );
 }
