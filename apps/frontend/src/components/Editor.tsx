@@ -2,12 +2,18 @@
 
 import { useRef } from "react";
 import { Editor as TinyMCE } from "@tinymce/tinymce-react";
+import { client } from "@/lib/client";
 
 export default function Editor() {
   const editorRef = useRef(null);
-  const log = () => {
+  const handleSave = async () => {
     if (editorRef.current) {
-      console.log(editorRef.current.getContent());
+      const content = editorRef.current.getContent();
+      const res = await client.post.createPost.mutate({
+        title: "Sample",
+        content,
+      });
+      console.log(res);
     }
   };
   return (
@@ -48,7 +54,7 @@ export default function Editor() {
         }}
       />
       <button
-        onClick={log}
+        onClick={handleSave}
         className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
         aria-label="Show editor content in console"
       >
