@@ -46,9 +46,32 @@ export const smileKeys = mysqlTable("smileKeys", {
   ...timestamps,
 });
 
+export const smileKeysSchema = z.object({
+  id: z.number().optional(),
+  key: z.string(),
+  owner: z.string(),
+  createdAt: z.string().optional(),
+  updatedAt: z.string().optional(),
+});
+
 export const smileKeysRelations = relations(smileKeys, ({ one }) => ({
   owner: one(users, {
     fields: [smileKeys.owner],
     references: [users.email],
   }),
 }));
+
+export const posts = mysqlTable("posts", {
+  id: int("id").primaryKey().autoincrement(),
+  title: varchar("title", { length: 255 }).notNull(),
+  content: varchar("content", { length: 255 }).notNull(),
+  ...timestamps,
+});
+
+export const postsSchema = z.object({
+  id: z.number().optional(),
+  title: z.string(),
+  content: z.string(),
+  createdAt: z.string().optional(),
+  updatedAt: z.string().optional(),
+});
