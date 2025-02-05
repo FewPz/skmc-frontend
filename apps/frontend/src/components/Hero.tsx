@@ -14,7 +14,10 @@ export default function Hero() {
   };
 
   return (
-    <header id="header" className="bg-[url(/assets/images/hero_bg.png)] bg-no-repeat bg-cover bg-center min-h-screen relative">
+    <header
+      id="header"
+      className="bg-[url(/assets/images/hero_bg.png)] bg-no-repeat bg-cover bg-center min-h-screen relative"
+    >
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <Container>
         <Navbar />
@@ -54,18 +57,10 @@ export default function Hero() {
             animate="visible"
             variants={fadeIn}
           >
-            <Button
-              variant="default"
-              size="lg"
-              className="px-6 md:px-8"
-            >
+            <Button variant="default" size="lg" className="px-6 md:px-8">
               เข้าสู่ระบบ
             </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="px-6 md:px-8"
-            >
+            <Button variant="outline" size="lg" className="px-6 md:px-8">
               เรียนรู้เพิ่มเติม
             </Button>
           </motion.div>

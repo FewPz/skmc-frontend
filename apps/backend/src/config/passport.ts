@@ -30,8 +30,8 @@ passport.use(
       } catch (error) {
         done(error, null);
       }
-    }
-  )
+    },
+  ),
 );
 
 const jwtOptions = {
@@ -55,8 +55,8 @@ passport.use(
       } catch (error) {
         done(error, null);
       }
-    }
-  )
+    },
+  ),
 );
 
 passport.serializeUser((user: any, done: any) => {

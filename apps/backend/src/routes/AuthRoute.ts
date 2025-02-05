@@ -8,7 +8,7 @@ const router = Router();
 
 router.get(
   "/google",
-  passport.authenticate("google", { scope: ["email", "profile"] })
+  passport.authenticate("google", { scope: ["email", "profile"] }),
 );
 
 router.get(
@@ -26,11 +26,11 @@ router.get(
       process.env.JWT_SECRET!,
       {
         expiresIn: "1h",
-      }
+      },
     );
     res.cookie("token", token);
     res.redirect(`http://localhost:3000/`);
-  }
+  },
 );
 
 router.get("/logut", (req, res) => {
@@ -50,7 +50,7 @@ router.get("/me", (req: any, res: any) => {
 
   try {
     const user = jwt.verify(token, process.env.JWT_SECRET!);
-    return res.json({ user });
+    return res.json(user);
   } catch (err) {
     return res.status(500).json({ message: err });
   }

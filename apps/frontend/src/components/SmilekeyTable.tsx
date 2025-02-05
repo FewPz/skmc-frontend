@@ -72,7 +72,7 @@ export default function SmilekeyTable() {
                 >
                   {flexRender(
                     header.column.columnDef.header,
-                    header.getContext()
+                    header.getContext(),
                   )}
                 </th>
               ))}

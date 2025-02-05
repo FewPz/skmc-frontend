@@ -49,7 +49,9 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-          {user ? "Hello" + user.name : <AuthButton />}
+          <ul className="flex gap-x-4 text-customWhite text-[20px] hover:text-primary transition-all duration-200">
+            {user ? "สวัสดี " + user.name.split(" ")[0] : <AuthButton />}
+          </ul>
         </div>
         {/* Desktop navbar */}
         {/* Mobile navbar */}

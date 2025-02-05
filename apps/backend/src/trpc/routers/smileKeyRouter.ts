@@ -22,7 +22,7 @@ export const smileKeysRouter = router({
     .input(z.object({ number: z.number() }))
     .mutation(({ input }) => {
       const keys = Array.from({ length: input.number }, () =>
-        generateSecureKey()
+        generateSecureKey(),
       );
       db.insert(smileKeys).values(keys.map((key) => ({ key })));
       return { keys };

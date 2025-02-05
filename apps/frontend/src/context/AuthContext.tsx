@@ -32,7 +32,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
           `${process.env.NEXT_PUBLIC_API_URL}/v1/api/auth/me`,
           {
             withCredentials: true,
-          }
+          },
         );
         setUser(data);
       } catch {

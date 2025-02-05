@@ -10,7 +10,7 @@ export async function middleware(req: NextRequest) {
   try {
     const payload = await jwtVerify(
       token,
-      new TextEncoder().encode(process.env.JWT_SECRET)
+      new TextEncoder().encode(process.env.JWT_SECRET),
     );
     if (payload.payload.role !== "ADMIN") {
       return NextResponse.redirect(new URL("/", req.url));
